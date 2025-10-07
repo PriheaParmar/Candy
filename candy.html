@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Candidate Resume Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        th {
+            background: #eee;
+        }
+
+        .role-suggestion {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Candidate Details Form</h2>
+
+    <form id="candidateForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <textarea id="education" placeholder="Education" required></textarea>
+        <textarea id="skills" placeholder="Skills (comma separated)" required></textarea>
+        <textarea id="experience" placeholder="Experience" required></textarea>
+        <button type="submit">Save Candidate</button>
+    </form>
+
+    <h2>Saved Candidates</h2>
+    <table id="candidateTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Education</th>
+                <th>Skills</th>
+                <th>Experience</th>
+                <th>Suggested Roles (Top 5)</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+</body>
+<script src="candy.js"></script>
+</html>

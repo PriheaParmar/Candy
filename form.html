@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speedy Apply Pro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #000 0%, #764ba2 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .form-card {
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 1.4em;
+      color: #667eea;
+      margin: 25px 0 15px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #667eea;
+      grid-column: 1 / -1;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      margin-bottom: 6px;
+      color: #333;
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    label .required {
+      color: #e74c3c;
+      margin-left: 3px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-submit {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .table-container {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      overflow-x: auto;
+    }
+
+    h3 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1000px;
+    }
+
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    tbody tr:hover {
+      background: #e3f2fd;
+      transition: background 0.2s ease;
+    }
+
+    .resume-link {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .resume-link:hover {
+      text-decoration: underline;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-delete {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-delete:hover {
+      background: #c0392b;
+    }
+
+    .alert {
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .alert.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2> Candy Filling </h2>
+    
+    <div class="form-card">
+
+      <form id="candidateForm">
+        <!-- Personal Information -->
+        <div class="section-title">📋 Personal Information</div>
+        
+        <div class="form-group">
+          <label>First Name <span class="required">*</span></label>
+          <input type="text" id="firstName" required placeholder="John">
+        </div>
+        
+        <div class="form-group">
+          <label>Middle Name</label>
+          <input type="text" id="middleName" placeholder="Michael">
+        </div>
+        
+        <div class="form-group">
+          <label>Last Name <span class="required">*</span></label>
+          <input type="text" id="lastName" required placeholder="Doe">
+        </div>
+        
+        <div class="form-group">
+          <label>Title</label>
+          <select id="title">
+            <option value="">Select</option>
+            <option value="Mr">Mr</option>
+            <option value="Ms">Ms</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Dr">Dr</option>
+            <option value="Prof">Prof</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Gender</label>
+          <select id="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Non-binary">Non-binary</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Date of Birth <span class="required">*</span></label>
+          <input type="date" id="dob" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nationality</label>
+          <input type="text" id="nationality" placeholder="e.g., Indian, American">
+        </div>
+
+        <div class="form-group">
+          <label>Marital Status</label>
+          <select id="maritalStatus">
+            <option value="">Select</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
+            <option value="Prefer not to say">Prefer not to say</option>
+          </select>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section-title">📞 Contact Information</div>
+
+        <div class="form-group">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" id="email" required placeholder="john.doe@example.com">
+        </div>
+
+        <div class="form-group">
+          <label>Phone <span class="required">*</span></label>
+          <input type="tel" id="phone" required placeholder="+1 (555) 123-4567">
+        </div>
+
+        <div class="form-group">
+          <label>Alternate Phone</label>
+          <input type="tel" id="altPhone" placeholder="+1 (555) 987-6543">
+        </div>
+
+        <div class="form-group">
+          <label>LinkedIn Profile</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/johndoe">
+        </div>
+
+        <div class="form-group">
+          <label>Portfolio/Website</label>
+          <input type="url" id="portfolio" placeholder="https://johndoe.com">
+        </div>
+
+        <div class="form-group">
+          <label>GitHub Profile</label>
+          <input type="url" id="github" placeholder="https://github.com/johndoe">
+        </div>
+
+        <!-- Address Information -->
+        <div class="section-title">🏠 Address Information</div>
+
+        <div class="form-group full-width">
+          <label>Street Address <span class="required">*</span></label>
+          <input type="text" id="address" required placeholder="123 Main Street, Apt 4B">
+        </div>
+
+        <div class="form-group">
+          <label>City <span class="required">*</span></label>
+          <input type="text" id="city" required placeholder="New York">
+        </div>
+
+        <div class="form-group">
+          <label>State/Province <span class="required">*</span></label>
+          <input type="text" id="state" required placeholder="NY">
+        </div>
+
+        <div class="form-group">
+          <label>ZIP/Postal Code <span class="required">*</span></label>
+          <input type="text" id="zip" required placeholder="10001">
+        </div>
+
+        <div class="form-group">
+          <label>Country <span class="required">*</span></label>
+          <input type="text" id="country" required placeholder="United States">
+        </div>
+
+        <!-- Education Details -->
+        <div class="section-title">🎓 Education Details</div>
+
+        <div class="form-group">
+          <label>Highest Education Level <span class="required">*</span></label>
+          <select id="educationLevel" required>
+            <option value="">Select</option>
+            <option value="High School">High School</option>
+            <option value="Associate Degree">Associate Degree</option>
+            <option value="Bachelor's Degree">Bachelor's Degree</option>
+            <option value="Master's Degree">Master's Degree</option>
+            <option value="Doctorate/PhD">Doctorate/PhD</option>
+            <option value="Professional Degree">Professional Degree</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Field of Study</label>
+          <input type="text" id="fieldOfStudy" placeholder="e.g., Computer Science">
+        </div>
+
+        <div class="form-group">
+          <label>University/Institution</label>
+          <input type="text" id="university" placeholder="e.g., MIT">
+        </div>
+
+        <div class="form-group">
+          <label>Graduation Year</label>
+          <input type="number" id="graduationYear" min="1950" max="2030" placeholder="2020">
+        </div>
+
+        <div class="form-group">
+          <label>GPA/Grade</label>
+          <input type="text" id="gpa" placeholder="e.g., 3.8/4.0 or 85%">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Certifications</label>
+          <textarea id="certifications" placeholder="List any professional certifications (e.g., AWS Certified, PMP, CPA)"></textarea>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section-title">💼 Professional Experience</div>
+
+        <div class="form-group">
+          <label>Total Years of Experience <span class="required">*</span></label>
+          <input type="number" id="experience" min="0" max="50" required placeholder="5">
+        </div>
+
+        <div class="form-group">
+          <label>Current Job Title</label>
+          <input type="text" id="currentJobTitle" placeholder="e.g., Senior Software Engineer">
+        </div>
+
+        <div class="form-group">
+          <label>Current Company</label>
+          <input type="text" id="currentCompany" placeholder="e.g., Google">
+        </div>
+
+        <div class="form-group">
+          <label>Current Salary (Annual)</label>
+          <input type="text" id="currentSalary" placeholder="e.g., ₹12 LPA or $80,000">
+        </div>
+
+        <div class="form-group">
+          <label>Expected Salary (Annual) <span class="required">*</span></label>
+          <input type="text" id="expectedSalary" required placeholder="e.g., ₹15 LPA or $100,000">
+        </div>
+
+        <div class="form-group">
+          <label>Notice Period</label>
+          <select id="noticePeriod">
+            <option value="">Select</option>
+            <option value="Immediate">Immediate</option>
+            <option value="15 days">15 days</option>
+            <option value="1 month">1 month</option>
+            <option value="2 months">2 months</option>
+            <option value="3 months">3 months</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <label>Key Skills <span class="required">*</span></label>
+          <textarea id="skills" required placeholder="e.g., JavaScript, React, Node.js, Python, Machine Learning"></textarea>
+        </div>
+
+        <div class="form-group full-width">
+          <label>Work Experience Summary</label>
+          <textarea id="workSummary" placeholder="Brief summary of your professional experience and achievements"></textarea>
+        </div>
+
+        <!-- Position Applied For -->
+        <div class="section-title">🎯 Position Details</div>
+
+        <div class="form-group">
+          <label>Job Title Applied For <span class="required">*</span></label>
+          <input type="text" id="jobTitle" required placeholder="e.g., Full Stack Developer">
+        </div>
+
+        <div class="form-group">
+          <label>Department/Category</label>
+          <select id="department">
+            <option value="">Select</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Sales">Sales</option>
+            <option value="HR">Human Resources</option>
+            <option value="Finance">Finance</option>
+            <option value="Operations">Operations</option>
+            <option value="Design">Design</option>
+            <option value="Product">Product Management</option>
+            <option value="Customer Service">Customer Service</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Employment Type Preferred</label>
+          <select id="employmentType">
+            <option value="">Select</option>
+            <option value="Full-time">Full-time</option>
+            <option value="Part-time">Part-time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+            <option value="Freelance">Freelance</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Work Mode</label>
+          <select id="workMode">
+            <option value="">Select</option>
+            <option value="Remote">Remote</option>
+            <option value="On-site">On-site</option>
+            <option value="Hybrid">Hybrid</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Willing to Relocate? <span class="required">*</span></label>
+          <select id="relocate" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Depends on location">Depends on location</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Preferred Locations</label>
+          <input type="text" id="preferredLocations" placeholder="e.g., New York, San Francisco, Remote">
+        </div>
+
+        <!-- Legal & Compliance -->
+        <div class="section-title">📝 Legal & Compliance</div>
+
+        <div class="form-group">
+          <label>Work Authorization Status <span class="required">*</span></label>
+          <select id="visaStatus" required>
+            <option value="">Select</option>
+            <option value="Citizen">Citizen</option>
+            <option value="Permanent Resident">Permanent Resident</option>
+            <option value="H1B">H1B Visa</option>
+            <option value="L1">L1 Visa</option>
+            <option value="F1 OPT">F1 OPT</option>
+            <option value="EAD">EAD</option>
+            <option value="Other">Other Work Permit</option>
+            <option value="Require Sponsorship">Require Sponsorship</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Require Sponsorship? <span class="required">*</span></label>
+          <select id="sponsorship" required>
+            <option value="No">No</option>
+            <option value="Yes - Now">Yes - Now</option>
+            <option value="Yes - Future">Yes - In Future</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Ethnicity (Optional - EEO)</label>
+          <select id="ethnicity">
+            <option value="">Prefer not to say</option>
+            <option value="Asian">Asian</option>
+            <option value="Black or African American">Black or African American</option>
+            <option value="Hispanic or Latino">Hispanic or Latino</option>
+            <option value="White">White</option>
+            <option value="Native American">Native American or Alaska Native</option>
+            <option value="Pacific Islander">Native Hawaiian or Pacific Islander</option>
+            <option value="Two or more races">Two or more races</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Disability Status (Optional - EEO)</label>
+          <select id="disability">
+            <option value="">Prefer not to say</option>
+            <option value="Yes">Yes, I have a disability</option>
+            <option value="No">No, I don't have a disability</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Veteran Status (Optional - EEO)</label>
+          <select id="veteran">
+            <option value="">Prefer not to say</option>
+            <option value="Protected Veteran">Protected Veteran</option>
+            <option value="Not a Protected Veteran">Not a Protected Veteran</option>
+          </select>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="section-title">ℹ️ Additional Information</div>
+
+        <div class="form-group">
+          <label>How did you hear about us?</label>
+          <select id="referralSource">
+            <option value="">Select</option>
+            <option value="Job Board">Job Board</option>
+            <option value="Company Website">Company Website</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Employee Referral">Employee Referral</option>
+            <option value="Recruiter">Recruiter</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Career Fair">Career Fair</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Referral Name (if applicable)</label>
+          <input type="text" id="referralName" placeholder="Name of person who referred you">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Cover Letter / Why are you interested?</label>
+          <textarea id="coverLetter" rows="4" placeholder="Tell us why you're interested in this position and what makes you a great fit"></textarea>
+        </div>
+
+        <div class="form-group full-width">
+          <label>Additional Comments</label>
+          <textarea id="additionalComments" placeholder="Any other information you'd like to share"></textarea>
+        </div>
+
+        <!-- Resume Upload -->
+        <div class="section-title">📄 Documents</div>
+
+        <div class="form-group">
+          <label>Upload Resume <span class="required">*</span></label>
+          <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+        </div>
+
+        <div class="form-group">
+          <label>Upload Cover Letter (Optional)</label>
+          <input type="file" id="coverLetterFile" accept=".pdf,.doc,.docx">
+        </div>
+
+        <div class="form-group full-width checkbox-group">
+          <input type="checkbox" id="agreeTerms" required>
+          <label for="agreeTerms">I confirm that all information provided is accurate and complete <span class="required">*</span></label>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Application</button>
+      </form>
+    </div>
+
+    <div class="table-container">
+      <h3>📊 Candidate Applications</h3>
+      <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <button onclick="exportToCSV()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📥 Export to CSV</button>
+        <button onclick="clearAllData()" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">🗑️ Clear All Data</button>
+        <button onclick="viewDetailedReport()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📋 View Detailed Report</button>
+      </div>
+      <table id="candidateTable">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Position</th>
+            <th>Experience</th>
+            <th>Education</th>
+            <th>Expected Salary</th>
+            <th>Location</th>
+            <th>Submitted</th>
+            <th>Resume</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Detailed View Modal -->
+    <div id="detailModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto;">
+      <div style="background: white; max-width: 900px; margin: 20px auto; border-radius: 15px; padding: 30px; position: relative;">
+        <button onclick="closeDetailModal()" style="position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">✕ Close</button>
+        <div id="detailContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="fill.js"></script>
+</body>
+</html>
