@@ -1,0 +1,120 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "fullName": "John Doe",
+  "email": "john.doe@email.com",
+  "phone": "5551234567",
+  "phoneWithCode": "+1-555-123-4567",
+  "countryCode": "+1",
+  "address": "123 Main Street, Apt 4B",
+  "city": "San Francisco",
+  "state": "California",
+  "zip": "94102",
+  "country": "United States",
+  "linkedin": "https://linkedin.com/in/johndoe",
+  "website": "https://johndoe.dev",
+  "github": "https://github.com/johndoe",
+  
+  "bachelors": {
+    "degree": "Bachelor of Science",
+    "major": "Computer Science",
+    "university": "Stanford University",
+    "graduationYear": "2020",
+    "gpa": "3.8"
+  },
+  
+  "masters": {
+    "degree": "Master of Science",
+    "major": "Computer Science",
+    "university": "MIT",
+    "graduationYear": "2022",
+    "gpa": "3.9"
+  },
+  
+  "company": "Tech Corp Inc.",
+  "jobTitle": "Senior Software Engineer",
+  "totalExperience": "5",
+  "experienceYears": "5 years",
+  
+  "workExperienceDetails": {
+    "javascript": "4 years",
+    "react": "3 years",
+    "nodejs": "4 years",
+    "python": "3 years",
+    "aws": "2 years",
+    "leadership": "2 years",
+    "agile": "4 years"
+  },
+  
+  "recentProjects": "1) E-commerce Platform: Led development of a scalable e-commerce platform handling 100K+ daily users using React, Node.js, and PostgreSQL. Reduced page load time by 40%.\n\n2) Real-time Analytics Dashboard: Built real-time data visualization system using React, D3.js, and WebSocket. Processed 1M+ events per day.\n\n3) Microservices Migration: Architected and executed migration from monolith to microservices architecture, improving deployment frequency by 300%.",
+  
+  "skills": "JavaScript, React, Node.js, Python, AWS, Docker, PostgreSQL, MongoDB, Redis, Kubernetes",
+  
+  "summary": "Passionate software engineer with 5+ years of experience building scalable web applications. Specialized in full-stack development with expertise in React, Node.js, and cloud technologies. Strong problem-solver with a track record of delivering high-quality code in fast-paced environments.",
+  
+  "coverLetter": "I am excited to apply for this position as it aligns perfectly with my experience in building modern web applications. My background in full-stack development and proven track record of delivering scalable solutions makes me an ideal candidate for your team.",
+  
+  "whyWorkHere": "I am particularly drawn to your company's mission of using technology to solve real-world problems. Your commitment to innovation and collaborative culture aligns perfectly with my values. I'm excited about the opportunity to contribute to impactful projects while growing alongside a talented team.",
+  
+  "howFoundJob": "LinkedIn",
+  "jobSource": "LinkedIn",
+  
+  "salary": "120000",
+  "expectedSalary": "120000-150000",
+  "startDate": "2024-12-01",
+  "availableFrom": "2024-12-01",
+  "noticePeriod": "2 weeks",
+  
+  "citizenship": "US Citizen",
+  "nationality": "American",
+  "workAuthorization": "US Citizen",
+  "visaStatus": "US Citizen",
+  "requireSponsorship": false,
+  "sponsorshipRequired": "No",
+  "legallyAuthorized": true,
+  "authorizedToWork": "Yes",
+  "needWorkPermit": false,
+  
+  "eligibility": {
+    "workInUS": true,
+    "over18": true,
+    "backgroundCheck": true,
+    "drugTest": true,
+    "relocate": true,
+    "travel": true,
+    "workWeekends": false,
+    "workNights": false
+  },
+  
+  "veteran": false,
+  "veteranStatus": "Not a veteran",
+  "disability": false,
+  "disabilityStatus": "No",
+  "gender": "Male",
+  "race": "Asian",
+  "ethnicity": "Not Hispanic or Latino",
+  
+  "securityClearance": "None",
+  "criminalRecord": false,
+  
+  "resumePath": "C:\\Users\\John\\Documents\\John_Doe_Resume.pdf",
+  "resumeFileName": "John_Doe_Resume.pdf",
+  
+  "signature": "John Doe",
+  "signatureDate": "2024-10-14",
+  
+  "referral": "LinkedIn",
+  "referralName": "",
+  "referralEmail": "",
+  
+  "certifications": "AWS Certified Solutions Architect, Certified Kubernetes Administrator",
+  
+  "languages": "English (Native), Spanish (Intermediate)",
+  
+  "preferences": {
+    "remoteWork": true,
+    "workType": "Hybrid",
+    "willingToRelocate": true,
+    "preferredLocations": "San Francisco, Seattle, New York"
+  }
+}

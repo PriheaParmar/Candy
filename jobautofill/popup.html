@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>JobForm Autofill</title>
+  <link rel="stylesheet" href="popup.css"/>
+</head>
+<body>
+  <div class="container">
+    <h3>JobForm Autofill</h3>
+    <label for="profileFile">Load profile JSON</label>
+    <input id="profileFile" type="file" accept=".json" />
+    <div>
+      <select id="profileSelect"></select>
+    </div>
+    <div class="buttons">
+      <button id="scanBtn">Scan page (preview)</button>
+      <button id="autofillBtn">Autofill page</button>
+    </div>
+    <div id="log" class="log"></div>
+    <hr/>
+    <div class="notes">
+      <strong>Resume uploads:</strong>
+      <p>Due to browser security, we cannot auto-set file inputs. Use "Attach resume" in the UI to open a picker and then drag the file to the page file-input if required.</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
