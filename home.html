@@ -1,51 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poiret+One&display=swap"
     rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poiret+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poiret+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<style>
-  * {margin: 0; padding: 0; color: #000;}
-  body {background: whitesmoke; display: flex;}
-  .navbar {background-color: black;padding: 2vw;    font-size: 1.8rem;    color: white !important;    text-align: left;    border: 1px solid transparent;    border-image: linear-gradient(90deg, #ff6b6b, #ffd86b, #6bffb3, #6b9bff) 1;    width: 18vw;    height: 100vh;    font-family: "Lobster Two", sans-serif;    font-weight: 400;    font-style: normal;  }
-  ul {  color: white !important;  list-style-type: none;    font-family: "Poiret One", sans-serif;    font-size: 1rem;    text-align: left;    border-bottom: 1px solid rgba(255, 255, 255, 0.658);    margin-bottom: 5vh;  }
-  li { color: white !important;   margin-bottom: 2vh;    cursor: pointer;  }
-  li:hover {    color: #ffd86b;  }
-  .logo-container { color: white !important;display: flex; margin-bottom: 5vh;}
-  .logo { height: 2.6rem;}
-  .main-body{display: flex; flex-direction: column; color: #000;}
-  .header{border: 2px solid yellow; height: 7vh;}
-  .main-section { width: 75vw; padding: 2vw;height: 100vh;}
-  button {    float: right;    position: relative;    overflow: hidden;    background-color: #444141;    border-radius: 4px;    color: #fff;    cursor: pointer;    padding: 15px 30px;    font-size: 18px;    font-weight: bold;    letter-spacing: 1px;    border: none;    z-index: 0;  }
-  button::after {content: "";    position: absolute;    inset: 0;    background-image: linear-gradient(90deg, #ff6b6b 0%, #ffd86b 50%, #6bffb3 75%, #6b9bff 100%);    opacity: 0;    transition: opacity 0.2s ease 0.2s;    z-index: -1;  }
-  button:hover::after {opacity: 1;}
-  .add-button { padding: 0;;display: flex;font-size: 2rem; width: 3.5vw; height: 3.5vw; justify-content: center; text-align: center; align-items: center;}
-  .heading {}
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb {    background: linear-gradient(90deg, #ff6b6b, #ffd86b, #6bffb3, #6b9bff);    border-radius: 3px;  }
-  ::-webkit-scrollbar-thumb:hover {    background: linear-gradient(90deg, #ff6b6b, #ffd86b, #6bffb3, #6b9bff);  }
-  * { scrollbar-width: thin; scrollbar-color: #ff6a00 transparent; }
-  .section {    display: none;    color: white;    font-family: "Poiret One", sans-serif;    font-size: 1.1rem;    line-height: 1.6;  }
-  .section.active {    display: block;  }
-   table {  width: 100%;border-collapse: collapse;background: white;  font-family: "Ubuntu", sans-serif;}
 
-  th,td {border: 1px solid #ccc;padding: 8px; }
-  th {  background: #eee;}
-  .role-suggestion { font-size: 12px;color: #666;}
-  .dashboard-sec-1{display: flex;}
-  .hiring{height: 50vh;width: 55vw;border: 1px solid black;margin-right: 2vw;}
-        .application{height: 50vh;width: 17.5vw;border: 1px solid black;}
+<style>
+
 </style>
 
 <body>
@@ -71,111 +47,148 @@
     </div>
   </div>
   <div class="main-body">
-  <div class="main-section">
-    
-    <div class="section active" id="dashboard">
-        <h2 class="heading">Dashboard <button onclick="window.open('candy.html', '_blank');" class="add-button">+</button></h2>
+    <div class="main-section">
+
+      <div class="section active" id="dashboard">
+        <h2 class="heading">Dashboard <button onclick="window.open('candy.html', '_blank');"
+            class="add-button">+</button></h2>
         <p id="current-date" style=" font-size: 1.2rem;"> Today is </p>
-        
+
 
 
         <div class="dashboard-sec-1">
-            <div class="hiring">
-                <table>
-                <tr>
+          <div class="hiring">
+            <table>
+              <tr>
                 <th>Name</th>
                 <th>Screeening</th>
                 <th>Interview</th>
                 <th>Test</th>
                 <th>Hired</th>
-            </tr>
-                </table>
-            </div>
-            <div class="application">
-                <div class="total-application">30</div>
-                <div class="profile-1">15</div>
-                <div class="profile-2">15</div>
-            </div>
+              </tr>
+            </table>
+          </div>
+          <div class="application">
+            <div class="total-application">30</div>
+            <div class="profile-1">15</div>
+            <div class="profile-2">15</div>
+          </div>
         </div>
-      <h2>My Candidates</h2>
-    <table id="candidateTable">
-        <thead>
+        <h2>My Candidates</h2>
+        <table id="candidateTable">
+          <thead>
             <tr>
-                <th>Name</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Education</th>
+              <th>Skills</th>
+              <th>Experience</th>
+              <th>Suggested Roles (Top 5)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+
+
+      </div>
+
+      <div class="section" id="inbox">
+        <h2 class="heading">Inbox</h2>
+        <p>Check your latest messages and notifications here.</p>
+      </div>
+
+      <div class="section" id="calendar">
+        <h2 class="heading">Calendar & Tasks</h2>
+        <p>Manage your schedule and upcoming tasks in this section.</p>
+        <div class="container">
+          <!-- 📅 CALENDAR DIV -->
+          <div class="calendar-container">
+            <div class="calendar-header">October 2025</div>
+            <div class="calendar-days" id="calendarDays"></div>
+          </div>
+
+          <!-- 📝 TASK LIST DIV -->
+          <div class="task-list">
+            <h2>Your Tasks</h2>
+            <div id="taskListContainer"></div>
+          </div>
+        </div>
+
+        <!-- 🧾 TASK MODAL DIV -->
+        <div id="taskModal">
+          <div class="modal-content">
+            <h3 id="modalDate"></h3>
+            <textarea id="taskInput" placeholder="Enter your tasks here..."></textarea>
+            <div class="buttons">
+              <button class="save">Save</button>
+              <button class="delete">Delete</button>
+              <button class="close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="jobs">
+        <h2 class="heading">Jobs</h2>
+        <p>View and manage job listings or add new opportunities.</p>
+      </div>
+
+      <div class="section" id="candidates">
+        <h2 class="heading">Candidates</h2>
+        <p>Browse, track, and review candidate profiles here.</p>
+        <div class="table-container">
+          <h3>📊 Candidate Applications</h3>
+          <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button onclick="exportToCSV()"
+              style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📥
+              Export to CSV</button>
+            <button onclick="clearAllData()"
+              style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">🗑️
+              Clear All Data</button>
+            <button onclick="viewDetailedReport()"
+              style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📋
+              View Detailed Report</button>
+          </div>
+          <table id="candidateTable">
+            <thead>
+              <tr>
+                <th>Full Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Education</th>
-                <th>Skills</th>
+                <th>Position</th>
                 <th>Experience</th>
-                <th>Suggested Roles (Top 5)</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+                <th>Education</th>
+                <th>Expected Salary</th>
+                <th>Location</th>
+                <th>Submitted</th>
+                <th>Resume</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
 
-
-      
-    </div>
-
-    <div class="section" id="inbox">
-      <h2 class="heading">Inbox</h2>
-      <p>Check your latest messages and notifications here.</p>
-    </div>
-
-    <div class="section" id="calendar">
-      <h2 class="heading">Calendar & Tasks</h2>
-      <p>Manage your schedule and upcoming tasks in this section.</p>
-    </div>
-
-    <div class="section" id="jobs">
-      <h2 class="heading">Jobs</h2>
-      <p>View and manage job listings or add new opportunities.</p>
-    </div>
-
-    <div class="section" id="candidates">
-      <h2 class="heading">Candidates</h2>
-      <p>Browse, track, and review candidate profiles here.</p>
-      <div class="table-container">
-      <h3>📊 Candidate Applications</h3>
-      <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <button onclick="exportToCSV()" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📥 Export to CSV</button>
-        <button onclick="clearAllData()" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">🗑️ Clear All Data</button>
-        <button onclick="viewDetailedReport()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📋 View Detailed Report</button>
+        <!-- Detailed View Modal -->
+        <div id="detailModal"
+          style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto;">
+          <div
+            style="background: white; max-width: 900px; margin: 20px auto; border-radius: 15px; padding: 30px; position: relative;">
+            <button onclick="closeDetailModal()"
+              style="position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">✕
+              Close</button>
+            <div id="detailContent"></div>
+          </div>
+        </div>
       </div>
-      <table id="candidateTable">
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Position</th>
-            <th>Experience</th>
-            <th>Education</th>
-            <th>Expected Salary</th>
-            <th>Location</th>
-            <th>Submitted</th>
-            <th>Resume</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-
-    <!-- Detailed View Modal -->
-    <div id="detailModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto;">
-      <div style="background: white; max-width: 900px; margin: 20px auto; border-radius: 15px; padding: 30px; position: relative;">
-        <button onclick="closeDetailModal()" style="position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">✕ Close</button>
-        <div id="detailContent"></div>
-      </div>
-    </div>
-  </div>
     </div>
 
     <div class="section" id="career">
       <h2 class="heading">Career Sites</h2>
       <p>Customize and manage your company’s career site pages.</p>
-       
+
 
     </div>
 
@@ -199,33 +212,132 @@
       document.getElementById(id).classList.add('active');
     }
   </script>
- <script>
-  const today = new Date();
+  <script>
+    const today = new Date();
 
-  // Weekday names
-  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const dayName = days[today.getDay()];
+    // Weekday names
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayName = days[today.getDay()];
 
-  // Month names
-  const months = ["January", "February", "March", "April", "May", "June", 
-                  "July", "August", "September", "October", "November", "December"];
-  const monthName = months[today.getMonth()];
+    // Month names
+    const months = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"];
+    const monthName = months[today.getMonth()];
 
-  // Day with ordinal suffix
-  const dayNum = today.getDate();
-  let suffix = "th";
-  if (dayNum % 10 === 1 && dayNum !== 11) suffix = "st";
-  else if (dayNum % 10 === 2 && dayNum !== 12) suffix = "nd";
-  else if (dayNum % 10 === 3 && dayNum !== 13) suffix = "rd";
+    // Day with ordinal suffix
+    const dayNum = today.getDate();
+    let suffix = "th";
+    if (dayNum % 10 === 1 && dayNum !== 11) suffix = "st";
+    else if (dayNum % 10 === 2 && dayNum !== 12) suffix = "nd";
+    else if (dayNum % 10 === 3 && dayNum !== 13) suffix = "rd";
 
-  // Full date string
-  const fullDate = `Today is ${dayName}, ${dayNum}${suffix} ${monthName}, ${today.getFullYear()}`;
+    // Full date string
+    const fullDate = `Today is ${dayName}, ${dayNum}${suffix} ${monthName}, ${today.getFullYear()}`;
 
-  // Display in HTML
-  document.getElementById("current-date").textContent = fullDate;
-</script>
+    // Display in HTML
+    document.getElementById("current-date").textContent = fullDate;
+  </script>
+  <script>
+    const calendarDays = document.getElementById('calendarDays');
+    const taskListContainer = document.getElementById('taskListContainer');
+    const taskModal = document.getElementById('taskModal');
+    const modalDate = document.getElementById('modalDate');
+    const taskInput = document.getElementById('taskInput');
+    const saveBtn = document.querySelector('.save');
+    const deleteBtn = document.querySelector('.delete');
+    const closeBtn = document.querySelector('.close');
+
+    const monthDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const year = 2025, month = 9; // October = 9
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+
+    let selectedDate = '';
+
+    // Load calendar
+    function loadCalendar() {
+      calendarDays.innerHTML = '';
+      monthDays.forEach(d => {
+        const dayName = document.createElement('div');
+        dayName.classList.add('day-name');
+        dayName.textContent = d;
+        calendarDays.appendChild(dayName);
+      });
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement('div');
+        calendarDays.appendChild(empty);
+      }
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const day = document.createElement('div');
+        day.classList.add('day');
+        day.textContent = i;
+        const dateKey = `${year}-${month + 1}-${i}`;
+        if (localStorage.getItem(dateKey)) day.classList.add('has-task');
+        day.addEventListener('click', () => openModal(dateKey));
+        calendarDays.appendChild(day);
+      }
+
+      loadTaskList();
+    }
+
+    // Open modal
+    function openModal(date) {
+      selectedDate = date;
+      modalDate.textContent = `Tasks for ${date}`;
+      taskInput.value = localStorage.getItem(date) || '';
+      taskModal.style.display = 'flex';
+    }
+
+    // Save task
+    saveBtn.addEventListener('click', () => {
+      if (taskInput.value.trim() === '') return;
+      localStorage.setItem(selectedDate, taskInput.value.trim());
+      taskModal.style.display = 'none';
+      loadCalendar();
+    });
+
+    // Delete task
+    deleteBtn.addEventListener('click', () => {
+      localStorage.removeItem(selectedDate);
+      taskModal.style.display = 'none';
+      loadCalendar();
+    });
+
+    closeBtn.addEventListener('click', () => taskModal.style.display = 'none');
+
+    window.addEventListener('click', e => {
+      if (e.target === taskModal) taskModal.style.display = 'none';
+    });
+
+    // Load all tasks in the list
+    function loadTaskList() {
+      taskListContainer.innerHTML = '';
+      const keys = Object.keys(localStorage).filter(k => k.startsWith(`${year}-${month + 1}-`));
+      if (keys.length === 0) {
+        taskListContainer.innerHTML = '<p style="color:#888;text-align:center;">No tasks yet.</p>';
+        return;
+      }
+
+      keys.sort((a, b) => {
+        const dayA = parseInt(a.split('-')[2]);
+        const dayB = parseInt(b.split('-')[2]);
+        return dayA - dayB;
+      });
+
+      keys.forEach(dateKey => {
+        const div = document.createElement('div');
+        div.classList.add('task-item');
+        div.innerHTML = `<strong>${dateKey}</strong><br>${localStorage.getItem(dateKey)}`;
+        taskListContainer.appendChild(div);
+      });
+    }
+
+    loadCalendar();
+  </script>
 </body>
 <script src="candy.js"></script>
+<script src="fill.js"></script>
 
-    <script src="fill.js"></script>
 </html>
