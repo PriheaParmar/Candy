@@ -81,7 +81,6 @@ button {
     position: relative;
     overflow: hidden;
     background-color: #444141;
-    border-radius: 4px;
     color: #fff;
     cursor: pointer;
     padding: 15px 30px;
@@ -105,19 +104,6 @@ button::after {
 button:hover::after {
     opacity: 1;
 }
-
-.add-button {
-    padding: 0;
-    ;
-    display: flex;
-    font-size: 2rem;
-    width: 3.5vw;
-    height: 3.5vw;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-
 ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -338,7 +324,104 @@ th {
     border: 1px solid #ccc;
     resize: none;
 }
+.add-btn:hover { background: linear-gradient(90deg, #ff6b6b, #ffd86b); }
 
+  /* ===== Table ===== */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 700px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+
+  th, td {
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+    text-align: left;
+  }
+
+  th {
+    background: linear-gradient(90deg, #6b9bff, #6bffb3);
+    color: white;
+  }
+
+  tr:hover { background: #f1f7ff; }
+
+
+
+  /* ===== Modal (Popup) ===== */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, #ff6b6b, #ffd86b, #6bffb3, #6b9bff);
+    border-image-slice: 1;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #666;
+  }
+
+  .close-btn:hover { color: #ff6b6b; }
+
+  .modal-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .save-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #6b9bff, #6bffb3);
+    border: none;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .save-btn:hover {
+    background: linear-gradient(90deg, #ff6b6b, #ffd86b);
+  }
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -347,7 +430,6 @@ th {
 
 button {
     border: none;
-    border-radius: 10px;
     padding: 8px 15px;
     cursor: pointer;
     font-weight: bold;

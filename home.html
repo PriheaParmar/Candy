@@ -50,8 +50,7 @@
     <div class="main-section">
 
       <div class="section active" id="dashboard">
-        <h2 class="heading">Dashboard <button onclick="window.open('candy.html', '_blank');"
-            class="add-button">+</button></h2>
+       
         <p id="current-date" style=" font-size: 1.2rem;"> Today is </p>
 
 
@@ -75,20 +74,7 @@
           </div>
         </div>
         <h2>My Candidates</h2>
-        <table id="candidateTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Education</th>
-              <th>Skills</th>
-              <th>Experience</th>
-              <th>Suggested Roles (Top 5)</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        
 
 
 
@@ -136,40 +122,33 @@
       </div>
 
       <div class="section" id="candidates">
-        <h2 class="heading">Candidates</h2>
+        <h2 class="heading">Candidates 
+          <button class="add-btn" id="openModalBtn"
+            class="add-button">+</button></h2>
         <p>Browse, track, and review candidate profiles here.</p>
-        <div class="table-container">
-          <h3>📊 Candidate Applications</h3>
-          <div style="margin-bottom: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-            <button onclick="exportToCSV()"
-              style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📥
-              Export to CSV</button>
-            <button onclick="clearAllData()"
-              style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">🗑️
-              Clear All Data</button>
-            <button onclick="viewDetailedReport()"
-              style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600;">📋
-              View Detailed Report</button>
-          </div>
-          <table id="candidateTable">
-            <thead>
-              <tr>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Position</th>
-                <th>Experience</th>
-                <th>Education</th>
-                <th>Expected Salary</th>
-                <th>Location</th>
-                <th>Submitted</th>
-                <th>Resume</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
+        <table id="candidateTable">
+  <thead>
+    <tr>
+      <th>Candidate Name</th>
+      <th>Job Title</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<!-- ===== Modal Form ===== -->
+<div class="modal" id="candidateModal">
+  <div class="modal-content">
+    <button class="close-btn" id="closeModalBtn">&times;</button>
+    <h2>Add New Candidate</h2>
+    <form id="candidateForm">
+      <input type="text" id="name" placeholder="Candidate Name" required>
+      <input type="text" id="job" placeholder="Job Title" required>
+      <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+      <button type="submit" class="save-btn">Save Candidate</button>
+    </form>
+  </div>
+</div>
 
         <!-- Detailed View Modal -->
         <div id="detailModal"
@@ -203,7 +182,70 @@
     </div>
   </div>
   </div>
+  <script>
+     const openModalBtn = document.getElementById('openModalBtn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const modal = document.getElementById('candidateModal');
+  const form = document.getElementById('candidateForm');
+  const tableBody = document.querySelector('#candidateTable tbody');
 
+  // Open modal
+  openModalBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+
+  // Close modal
+  closeModalBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  // Close when clicking outside
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+
+  // Save candidate and add to table
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const job = document.getElementById('job').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !job || !phone) return;
+
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${job}</td>
+      <td>${phone}</td>
+    `;
+    tableBody.appendChild(newRow);
+
+    form.reset();
+    modal.style.display = 'none';
+  });
+  </script>
+<script>
+  // Load candidates from localStorage
+  const tableBody = document.querySelector('#candidateTable tbody');
+  const candidates = JSON.parse(localStorage.getItem('candidates')) || [];
+
+  function renderTable() {
+    tableBody.innerHTML = '';
+    candidates.forEach((c) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${c.name}</td>
+        <td>${c.job}</td>
+        <td>${c.phone}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+  }
+
+  renderTable();
+</script>
   <script>
     function showSection(id) {
       document.querySelectorAll('.section').forEach(section => {
