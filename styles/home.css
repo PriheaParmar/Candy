@@ -324,15 +324,13 @@ th {
     border: 1px solid #ccc;
     resize: none;
 }
-.add-btn:hover { background: linear-gradient(90deg, #ff6b6b, #ffd86b); }
 
   /* ===== Table ===== */
   table {
     border-collapse: collapse;
     width: 100%;
-    max-width: 700px;
     background: white;
-    border-radius: 15px;
+    margin-top:5vh;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   }
@@ -344,11 +342,15 @@ th {
   }
 
   th {
-    background: linear-gradient(90deg, #6b9bff, #6bffb3);
+    background: linear-gradient(135deg, #000, #201f1f);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.1em;
+    font-weight:Bolder;
     color: white;
   }
 
-  tr:hover { background: #f1f7ff; }
 
 
 
@@ -360,20 +362,23 @@ th {
     background: rgba(0,0,0,0.5);
     justify-content: center;
     align-items: center;
+    color: #fff;
   }
 
   .modal-content {
-    background: white;
+    background: #000;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 0px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     width: 90%;
+    color: #fff;
     max-width: 400px;
     position: relative;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, #ff6b6b, #ffd86b, #6bffb3, #6b9bff);
     border-image-slice: 1;
     animation: fadeIn 0.3s ease;
+    color: #fff;
   }
 
   @keyframes fadeIn {
@@ -396,6 +401,7 @@ th {
   .modal-content h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #fff;
   }
   
 
@@ -403,7 +409,6 @@ th {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border-radius: 8px;
     border: 1px solid #ccc;
   }
 
@@ -419,9 +424,7 @@ th {
     transition: 0.3s;
   }
 
-  .save-btn:hover {
-    background: linear-gradient(90deg, #ff6b6b, #ffd86b);
-  }
+ 
 .buttons {
     display: flex;
     justify-content: space-between;
