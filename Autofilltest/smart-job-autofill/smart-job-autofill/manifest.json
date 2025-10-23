@@ -1,23 +1,22 @@
 {
   "manifest_version": 3,
-  "name": "Smart Job Autofill",
-  "version": "1.0.0",
-  "description": "Intelligently autofills job applications with your candidate data",
+  "name": "Job Form Autofill (JSON)",
+  "version": "1.0",
+  "description": "Auto-fill job application forms from a JSON resume/profile file.",
   "permissions": [
     "storage",
     "activeTab",
     "scripting"
   ],
   "host_permissions": [
-    "https://*/*",
-    "http://*/*"
+    "<all_urls>"
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup-dragdrop.html",
     "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
     }
   },
   "background": {
@@ -29,10 +28,5 @@
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ],
-  "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
-  }
+  ]
 }
