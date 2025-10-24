@@ -1,187 +1,172 @@
-// content.js
-(function(){  // wrapper function ( wraps entire code)
-  
-  function fieldHints(el) { // utility function to extract hints from a form field
-    const hints = []; // create an array to hold hints
-    if (!el) return ''; 
-    const attrs = ['name','id','placeholder','aria-label','title'];
-    attrs.forEach(a=>{
+(function() {
+  const DEBUG = false; // Toggle for console logs
+  const log = (...args) => DEBUG && console.log('[JobAutofill]', ...args);
+
+  // ================================
+  // FIELD HINT EXTRACTION
+  // ================================
+  function fieldHints(el) {
+    if (!el) return '';
+
+    const attrs = [
+      'name','id','placeholder','aria-label','title','data-name','data-testid','data-field',
+      'data-placeholder','data-qa','data-cy','data-test','data-test-id','formcontrolname',
+      'ng-reflect-name','for','autocomplete','type','role','aria-describedby','aria-labelledby',
+      'data-id','data-role','aria-placeholder'
+    ];
+
+    const hints = [];
+    attrs.forEach(a => {
       const v = el.getAttribute && el.getAttribute(a);
       if (v) hints.push(v);
     });
-    // try associated label
+
     try {
       if (el.labels && el.labels.length) {
         for (const lab of el.labels) {
           if (lab.innerText) hints.push(lab.innerText);
         }
-      } else {
-        // search for label[for=el.id]
-        const id = el.id;
-        if (id) {
-          const lab = document.querySelector(`label[for="${CSS.escape(id)}"]`);
-          if (lab) hints.push(lab.innerText);
-        }
+      } else if (el.id) {
+        const lab = document.querySelector(`label[for="${CSS.escape(el.id)}"]`);
+        if (lab && lab.innerText) hints.push(lab.innerText);
       }
-    } catch(e){}
-    return hints.join(' ').toLowerCase();
+    } catch {}
+
+    // Include placeholder-like aria text
+    const describedby = el.getAttribute('aria-describedby');
+    if (describedby) {
+      const desc = document.getElementById(describedby);
+      if (desc && desc.textContent) hints.push(desc.textContent);
+    }
+
+    return hints.join(' ').replace(/\s+/g, ' ').toLowerCase();
   }
 
-  // mapping keys -> heuristic keywords
+  // ================================
+  // KEYWORDS
+  // ================================
   const KEYWORDS = {
+    // Basic
     fullName: ['full name','fullname','applicant name','candidate name','name'],
-    firstName: ['first name','fname','given name','givenname','first'],
+    firstName: ['first name','fname','given name','first'],
+    middleName: ['middle name','mname'],
     lastName: ['last name','lname','surname','family name','lastname'],
-    email: ['email','e-mail','e mail','mail'],
-    phone: ['phone','telephone','mobile','contact'],
-    address: ['address','addr','street','address1','address line'],
-    city: ['city','town'],
-    state: ['state','province','region'],
-    zip: ['zip','postal','postcode','pin'],
-    country: ['country','nation'],
-    linkedin: ['linkedin','linkedin url','linkedin profile'],
-    website: ['website','portfolio','website url','personal website'],
-    degree: ['degree','qualification'],
-    university: ['university','college','school','institute'],
-    graduationYear: ['graduation year','grad year','year of graduation','graduation'],
-    company: ['current company','company','employer'],
-    jobTitle: ['job title','title','position','role'],
-    experience: ['experience','years experience','years'],
-    skills: ['skills','technical skills','skillset'],
+    password: ['password','pass','pwd'],
+    confirmPassword: ['confirm password','verify password','re-enter password','confirm pwd'],
+
+    // Contact
+    email: ['email','e-mail','mail', 'email address'],
+    phone: ['phone','telephone','mobile','cell','contact','phone number'],
+    phoneCode: ['country code','dial code','isd','phone code'],
+    address: ['address','street','addr','address line','address1','address2'],
+    city: ['city','town','locality'],
+    state: ['state','province','region','territory','zone'],
+    zip: ['zip','postal','postcode','pin','zip code','postal code'],
+    country: ['country','nation','country/territory','territory'],
+
+    // Work & eligibility
+    workAuth: ['work authorization','work auth','visa status','work permit','employment eligibility','eligible to work'],
+    sponsorship: ['require sponsorship','visa sponsorship','need visa','work visa needed'],
+    authorizedToWorkUS: ['authorized to work in us','eligible to work in the us','legally work in us'],
+    willingToRelocate: ['willing to relocate','open to relocation','ready to relocate','relocation preference'],
+    availableImmediately: ['available immediately','immediate joiner','notice period 0','start immediately'],
+
+    // Employment
+    company: ['current company','company','employer','organization'],
+    jobTitle: ['job title','position','role','designation'],
+    experience: ['experience','years experience','work experience','total experience'],
+    startDate: ['start date','available from','availability','joining date'],
+    salary: ['salary','expected salary','pay','compensation','desired salary','current salary'],
     summary: ['summary','about','about me','bio','profile','professional summary'],
-    coverLetter: ['cover letter','coverletter','why','motivation'],
-    salary: ['salary','expected salary','pay','compensation'],
-    startDate: ['start date','available from','availability','availability date'],
-    citizenship: ['citizenship','nationality'],
-    workAuth: ['work authorization','work auth','workpermit','work permit','eligible to work'],
-    veteran: ['veteran'],
-    disability: ['disability'],
+    skills: ['skills','technical skills','skillset','competencies','expertise'],
+
+    // Education
+    degree: ['degree','qualification','education level','major'],
+    university: ['university','college','school','institute'],
+    graduationYear: ['graduation year','year of graduation','grad year'],
+    gpa: ['gpa','grade point average','cgpa','marks'],
+
+    // Links
+    linkedin: ['linkedin','linkedin url','linkedin profile'],
+    website: ['website','portfolio','personal website','github','gitlab','behance','dribbble'],
+
+    // Personal
+    dob: ['date of birth','birthdate','birthday','dob'],
     gender: ['gender','sex'],
-    race: ['race','ethnicity'],
-    referral: ['referral','referred by','referrer']
+    ethnicity: ['ethnicity','race','ethnic background','racial identity'],
+    citizenship: ['citizenship','nationality','citizen of'],
+    veteran: ['veteran','veteran status'],
+    disability: ['disability','handicap'],
+    deviceType: ['device type','platform','device used'],
+    timezone: ['timezone','time zone'],
+    location: ['current location','location','city of residence'],
+    preferredLocation: ['preferred location','desired location','work location preference'],
+
+    // Application
+    referral: ['referral','referred by','referrer','who referred you'],
+    hearAbout: ['how did you hear','source','job source'],
+    coverLetter: ['cover letter','motivation letter','why do you want'],
+
+    // Files
+    resume: ['resume','cv','upload resume','attach cv'],
+    portfolioFile: ['portfolio file','upload portfolio'],
+    transcript: ['transcript','academic record']
   };
 
-  // Helper: test if any keyword matches string
-  function matchesKey(hint, key) {
+  // ================================
+  // MATCHING HELPER
+  // ================================
+  function matchScore(hint, key) {
+    let score = 0;
     const words = KEYWORDS[key];
-    if (!words) return false;
+    if (!words) return 0;
+
     for (const w of words) {
-      if (hint.includes(w)) return true;
+      if (hint.includes(w)) score += 5;
+      else if (hint.split(/\W+/).some(token => w.includes(token))) score += 2;
     }
-    return false;
+
+    // Bonus: direct type clue
+    if (hint.includes(key.toLowerCase())) score += 3;
+    return score;
   }
 
-  // Prefer explicit specific keys, fallback to generic 'name' etc.
+  // ================================
+  // MAIN LOGIC
+  // ================================
   function findAndFill(profile) {
     const inputs = Array.from(document.querySelectorAll('input, textarea, select'));
     const assigned = {};
-    // First pass: exact idiomatic matching (explicit keywords)
+
+    // Score fields against keywords
     for (const el of inputs) {
+      if (el.disabled || el.readOnly) continue;
       const hint = fieldHints(el);
       if (!hint) continue;
+
+      let bestKey = null;
+      let bestScore = 0;
       for (const key of Object.keys(KEYWORDS)) {
-        if (assigned[key]) continue; // already filled a best candidate
-        if (!profile.hasOwnProperty(key)) continue;
-        if (matchesKey(hint, key)) {
-          setValue(el, profile[key]);
-          assigned[key] = true;
-        }
+        if (assigned[key] || !profile[key]) continue;
+        const s = matchScore(hint, key);
+        if (s > bestScore) { bestScore = s; bestKey = key; }
+      }
+
+      if (bestKey && bestScore >= 5) {
+        setValue(el, profile[bestKey]);
+        assigned[bestKey] = true;
+        log('Matched', bestKey, '→', el, bestScore);
       }
     }
 
-    // Second pass: generic name heuristics (e.g., 'name', 'email', 'phone')
-    for (const el of inputs) {
-      const hint = fieldHints(el);
-      if (!hint) continue;
-      if (el.disabled || el.readOnly) continue;
-
-      if (!assigned.fullName && profile.fullName && (hint.includes('name') && !hint.includes('first') && !hint.includes('last'))) {
-        setValue(el, profile.fullName);
-        assigned.fullName = true;
-        continue;
-      }
-      if (!assigned.email && profile.email && hint.includes('email')) {
-        setValue(el, profile.email);
-        assigned.email = true;
-        continue;
-      }
-      if (!assigned.phone && profile.phone && (hint.includes('phone') || hint.includes('mobile') || hint.includes('telephone') || hint.includes('tel'))) {
-        setValue(el, profile.phone);
-        assigned.phone = true;
-        continue;
-      }
-      if (!assigned.address && profile.address && hint.includes('address')) {
-        setValue(el, profile.address);
-        assigned.address = true;
-        continue;
-      }
-      if (!assigned.city && profile.city && hint.includes('city')) {
-        setValue(el, profile.city);
-        assigned.city = true;
-        continue;
-      }
-      if (!assigned.state && profile.state && hint.includes('state')) {
-        setValue(el, profile.state);
-        assigned.state = true;
-        continue;
-      }
-      if (!assigned.zip && profile.zip && (hint.includes('zip') || hint.includes('postal') || hint.includes('post'))) {
-        setValue(el, profile.zip);
-        assigned.zip = true;
-        continue;
-      }
-      if (!assigned.country && profile.country && hint.includes('country')) {
-        setValue(el, profile.country);
-        assigned.country = true;
-        continue;
-      }
-      if (!assigned.linkedin && profile.linkedin && hint.includes('linkedin')) {
-        setValue(el, profile.linkedin);
-        assigned.linkedin = true;
-        continue;
-      }
-      if (!assigned.website && profile.website && (hint.includes('website') || hint.includes('portfolio'))) {
-        setValue(el, profile.website);
-        assigned.website = true;
-        continue;
-      }
-      if (!assigned.summary && profile.summary && (hint.includes('summary') || hint.includes('about') || hint.includes('bio'))) {
-        setValue(el, profile.summary);
-        assigned.summary = true;
-        continue;
-      }
-      if (!assigned.coverLetter && profile.coverLetter && (hint.includes('cover') || hint.includes('motivation'))) {
-        setValue(el, profile.coverLetter);
-        assigned.coverLetter = true;
-        continue;
-      }
-      if (!assigned.startDate && profile.startDate && (hint.includes('start date') || el.type === 'date' || hint.includes('available'))) {
-        setValue(el, profile.startDate);
-        assigned.startDate = true;
-        continue;
-      }
-      if (!assigned.salary && profile.salary && (hint.includes('salary') || hint.includes('expected'))) {
-        setValue(el, profile.salary);
-        assigned.salary = true;
-        continue;
-      }
-      // boolean flags - try to check checkboxes or radio when hint matches
-      if ((hint.includes('work') && hint.includes('auth')) && profile.workAuth !== undefined) {
-        setBoolean(el, profile.workAuth);
-        assigned.workAuth = true;
-        continue;
-      }
-    }
-
-    // Third: fill remaining best-effort by matching any key word anywhere
+    // Fallback heuristic (for unmatched)
     for (const el of inputs) {
       if (el.disabled || el.readOnly) continue;
       const hint = fieldHints(el);
       if (!hint) continue;
+
       for (const key of Object.keys(profile)) {
-        if (!profile[key]) continue;
-        if (assigned[key]) continue;
-        // convert key name to human form and search
+        if (assigned[key] || !profile[key]) continue;
         if (hint.includes(key.toLowerCase())) {
           setValue(el, profile[key]);
           assigned[key] = true;
@@ -189,175 +174,85 @@
         }
       }
     }
-
     return assigned;
   }
 
+  // ================================
+  // VALUE SETTING
+  // ================================
   function setValue(el, value) {
-    if (value === null || value === undefined) return;
+    if (value === undefined || value === null) return;
+
+    const type = (el.type || '').toLowerCase();
+    const tag = el.tagName.toLowerCase();
+
     try {
-      if (el.tagName.toLowerCase() === 'select') {
-        // try to find matching option
-        let matched = false;
-        for (const o of el.options) {
-          if (!o.value) continue;
-          if (o.value.toLowerCase().includes(String(value).toLowerCase()) ||
-              (o.text && o.text.toLowerCase().includes(String(value).toLowerCase()))) {
+      if (tag === 'select') {
+        const opts = Array.from(el.options);
+        for (const o of opts) {
+          if (o.value.toLowerCase() === String(value).toLowerCase() ||
+              o.text.toLowerCase() === String(value).toLowerCase()) {
             el.value = o.value;
-            matched = true;
-            break;
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+            return;
           }
         }
-        if (!matched && el.options.length === 1 && !el.options[0].value) {
-          // single-line custom select, try to set text input style
-          el.value = value;
-        }
-        el.dispatchEvent(new Event('change', { bubbles: true }));
-        return;
-      }
-
-      const type = el.type ? el.type.toLowerCase() : '';
-      if (type === 'checkbox' || type === 'radio') {
-        // radio/checkbox: if boolean or matching value
+        el.value = value;
+      } else if (['checkbox','radio'].includes(type)) {
         setBoolean(el, value);
-        return;
+      } else if (type === 'date') {
+        const d = new Date(value);
+        el.value = isNaN(d) ? value : d.toISOString().slice(0,10);
+      } else {
+        el.focus?.();
+        el.value = String(value).trim();
       }
 
-      if (type === 'date') {
-        // set to yyyy-mm-dd if possible
-        try {
-          const d = new Date(value);
-          if (!isNaN(d.getTime())) {
-            const y = d.getFullYear();
-            const m = String(d.getMonth()+1).padStart(2,'0');
-            const da = String(d.getDate()).padStart(2,'0');
-            el.value = `${y}-${m}-${da}`;
-          } else {
-            el.value = value;
-          }
-        } catch (e) {
-          el.value = value;
-        }
-        el.dispatchEvent(new Event('input', { bubbles: true }));
-        el.dispatchEvent(new Event('change', { bubbles: true }));
-        return;
-      }
-
-      // default: set text/textarea/etc
-      el.focus && el.focus();
-      el.value = String(value);
       el.dispatchEvent(new Event('input', { bubbles: true }));
       el.dispatchEvent(new Event('change', { bubbles: true }));
     } catch (e) {
-      console.warn('setValue error', e, el, value);
+      console.warn('Error setting value', e, el);
     }
   }
 
   function setBoolean(el, value) {
-    const type = el.type ? el.type.toLowerCase() : '';
     const valStr = String(value).toLowerCase();
-    if (type === 'radio') {
-      // try to find with same name and matching value or label
-      const name = el.name;
-      const group = document.querySelectorAll(`input[type="radio"][name="${CSS.escape(name)}"]`);
-      for (const r of group) {
-        const hint = fieldHints(r);
-        if (valStr === 'true' || valStr === 'yes' || valStr === '1') {
-          // pick the one that indicates yes/true
-          if (hint.includes('yes') || hint.includes('true') || hint.includes('female') || hint.includes('male') || hint.includes(String(value).toLowerCase())) {
-            r.checked = true;
-            r.dispatchEvent(new Event('change', { bubbles: true }));
-            return;
-          }
-        } else {
-          if (hint.includes('no') || hint.includes('false') || hint.includes(String(value).toLowerCase())) {
-            r.checked = true;
-            r.dispatchEvent(new Event('change', { bubbles: true }));
-            return;
-          }
-        }
-      }
-      // fallback: check first radio if truthy
-      if (value) {
-        const first = group[0];
-        if (first) { first.checked = true; first.dispatchEvent(new Event('change',{bubbles:true})); }
-      }
-    } else if (type === 'checkbox') {
-      const should = !!value;
-      el.checked = should;
-      el.dispatchEvent(new Event('change', { bubbles: true }));
-    } else {
-      // fallback: try to set value
-      setValue(el, value);
-    }
+    const isTrue = ['true','yes','1','y'].includes(valStr);
+    el.checked = isTrue;
+    el.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
-  function tryAutoSubmit() {
-    // common submit buttons
-    const candidateSelectors = [
-      'button[type="submit"]',
-      'input[type="submit"]',
-      'button:not([type])',
-      'input[type="button"]'
-    ];
-    const keywords = ['apply','submit','send','finish','save','continue','next','finalize','apply now'];
-    for (const sel of candidateSelectors) {
-      const nodes = Array.from(document.querySelectorAll(sel));
-      for (const n of nodes) {
-        const text = (n.innerText || n.value || '').toLowerCase();
-        if (!text) continue;
-        for (const kw of keywords) {
-          if (text.includes(kw)) {
-            try {
-              n.click();
-              console.log('JobAutofill: clicked submit button', n, text);
-              return true;
-            } catch (e) {
-              console.warn('click failed', e);
-            }
-          }
-        }
-      }
-    }
-    // fallback: try first form submit
-    const forms = document.forms;
-    if (forms && forms.length) {
-      try {
-        forms[0].submit();
-        console.log('JobAutofill: form.submit() fired');
-        return true;
-      } catch(e) {
-        console.warn('form.submit failed', e);
-      }
-    }
-    return false;
-  }
+  // ================================
+  // PUBLIC API
+  // ================================
+  window.__JOB_AUTOFILL_FILL = function(profile, options = {}) {
+    if (!profile || typeof profile !== 'object') return { error: 'Invalid profile' };
 
-  // exported function to run fill
-  window.__JOB_AUTOFILL_FILL = function(profile, options={}) {
-    try {
-      if (!profile || typeof profile !== 'object') {
-        console.warn('No profile provided');
-        return { error: 'no profile' };
-      }
-      console.log('JobAutofill: running fill', profile);
-      const assigned = findAndFill(profile);
-      console.log('JobAutofill: assigned keys', assigned);
-      if (options && options.autoSubmit) {
-        setTimeout(() => {
-          tryAutoSubmit();
-        }, 400);
-      }
-      return { ok: true, assigned };
-    } catch (e) {
-      console.error('JobAutofill error', e);
-      return { error: e.message };
-    }
+    const assigned = findAndFill(profile);
+    log('Assigned', assigned);
+
+    if (options.autoSubmit) setTimeout(tryAutoSubmit, 400);
+    return { ok: true, assigned };
   };
 
-  // fallback: listen for custom event from popup if content script wasn't available
-  window.addEventListener('jobAutofill_fill', (ev) => {
-    const { profile, options } = ev.detail || {};
+  // Optional auto-submit
+  function tryAutoSubmit() {
+    const buttons = document.querySelectorAll('button, input[type="submit"]');
+    for (const b of buttons) {
+      const t = (b.innerText || b.value || '').toLowerCase();
+      if (['submit','apply','send','finish','next','continue'].some(k => t.includes(k))) {
+        b.click();
+        log('Auto-submitted via', b);
+        return;
+      }
+    }
+    const forms = document.forms;
+    if (forms[0]) forms[0].submit();
+  }
+
+  // Event fallback
+  window.addEventListener('jobAutofill_fill', e => {
+    const { profile, options } = e.detail || {};
     window.__JOB_AUTOFILL_FILL(profile, options);
   });
 })();

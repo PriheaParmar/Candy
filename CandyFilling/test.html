@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Form Autofill Demo</title>
+</head>
+<body>
+  <h2>Job Application Form</h2>
+  
+  <form>
+    <!-- Case 1: Classic label -->
+    <label for="fullname">Full Name</label>
+    <input id="fullname" type="text">
+
+    <br><br>
+
+    <!-- Case 2: Wrapped label -->
+    <label>Email: <input type="email"></label>
+
+    <br><br>
+
+    <!-- Case 3: Paragraph above -->
+    <p>Why are you interested in this job?</p>
+    <textarea name="motivation"></textarea>
+
+    <br><br>
+
+    <!-- Case 4: Div question -->
+    <div class="question">Are you authorized to work in the US?</div>
+    <select>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <br><br>
+
+    <!-- Case 5: aria-label -->
+    <input type="text" aria-label="Phone number">
+
+    <br><br>
+
+    <!-- Case 6: placeholder -->
+    <input type="text" placeholder="Enter your city">
+  </form>
+
+  <script>
+    // Candidate JSON
+    const candidate = {
+      name: "Priya Parmar",
+      email: "priheaparmar@gmail.com",
+      motivation: "I am passionate about solving problems and contributing to innovative projects.",
+      authorization: "Yes",
+      phone: "9081637267",
+      city: "Ahmedabad"
+    };
+
+    // Function to detect question text
+    function getQuestionText(el) {
+      if (el.id) {
+        const lab = document.querySelector(`label[for="${el.id}"]`);
+        if (lab) return lab.innerText.trim();
+      }
+      const parentLabel = el.closest('label');
+      if (parentLabel) return parentLabel.innerText.trim();
+      let prev = el.previousElementSibling;
+      while (prev && !/^(p|div|span|td|th)$/i.test(prev.tagName)) {
+        prev = prev.previousElementSibling;
+      }
+      if (prev && prev.innerText) return prev.innerText.trim();
+      if (el.getAttribute("aria-label")) return el.getAttribute("aria-label").trim();
+      if (el.placeholder) return el.placeholder.trim();
+      return "";
+    }
+
+    // Function to guess which candidate field matches
+    function mapQuestionToCandidate(question) {
+      question = question.toLowerCase();
+      if (question.includes("name")) return candidate.name;
+      if (question.includes("email")) return candidate.email;
+      if (question.includes("interest") || question.includes("why")) return candidate.motivation;
+      if (question.includes("authorized")) return candidate.authorization;
+      if (question.includes("phone")) return candidate.phone;
+      if (question.includes("city")) return candidate.city;
+      return "";
+    }
+
+    // Autofill all fields
+    document.querySelectorAll("input, textarea, select").forEach(el => {
+      const question = getQuestionText(el);
+      const answer = mapQuestionToCandidate(question);
+
+      if (answer) {
+        if (el.tagName.toLowerCase() === "select") {
+          // Try to select matching option
+          for (let option of el.options) {
+            if (option.text.toLowerCase() === answer.toLowerCase()) {
+              option.selected = true;
+            }
+          }
+        } else {
+          el.value = answer;
+        }
+      }
+
+      console.log({ field: el.tagName, question, filledValue: el.value || "Selected: " + el.value });
+    });
+  </script>
+</body>
+</html>

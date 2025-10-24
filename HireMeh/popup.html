@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Job Assistant</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h2>AI Job Assistant</h2>
+    <p>Enter your details once, and we'll find & apply smartly.</p>
+
+    <form id="profileForm">
+      <label>Full Name</label>
+      <input type="text" id="name" required>
+
+      <label>Email</label>
+      <input type="email" id="email" required>
+
+      <label>Phone</label>
+      <input type="text" id="phone" required>
+
+      <label>Location</label>
+      <input type="text" id="location" placeholder="United States">
+
+      <label>Skills (comma separated)</label>
+      <input type="text" id="skills" placeholder="Python, Django, SQL, AWS">
+
+      <label>Years of Experience</label>
+      <input type="number" id="experience" min="0" value="0">
+
+      <button type="submit">💾 Save Profile</button>
+    </form>
+  </div>
+
+  <label>Job Portal</label>
+<select id="portal">
+  <option value="glassdoor">Glassdoor</option>
+  <option value="linkedin">LinkedIn</option>
+  <option value="indeed">Indeed</option>
+  <option value="simplyhired">SimplyHired</option>
+</select>
+
+<label>Job Title</label>
+<select id="jobTitle">
+  <option value="Backend Developer">Backend Developer</option>
+  <option value="Data Engineer">Data Engineer</option>
+</select>
+
+<button id="searchJobs">🔍 Find Jobs</button>
+
+
+  <script src="popup.js"></script>
+</body>
+</html>

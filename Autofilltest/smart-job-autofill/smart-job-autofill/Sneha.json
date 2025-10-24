@@ -4,39 +4,53 @@
   "fullName": "Sneha Elizabeth",
   "email": "snehae@mywebemails.com",
   "phone": "+1(312)774-9177",
+  "phoneCode": "+1",
   "address": "29 Park Ln S, Albany, NY - 12204",
   "city": "Albany",
   "state": "New York",
   "zip": "12204",
   "country": "United States",
-  "linkedin": "https://www.linkedin.com/in/sneha-elizabeth-saji-1b8585221/",
-  "website": " ",
-  "github": " ",
+  "currentLocation": "Albany, NY",
   
-  "degree": "Bachelor of Engineering,",
-  "university": " Sreenidhi Institute of Science & Technology",
-  "major": " Sreenidhi Institute of Science & Technology",
+  "linkedin": "https://www.linkedin.com/in/sneha-elizabeth-saji-1b8585221/",
+  "website": "",
+  "github": "",
+  
+  "degree": "Bachelor of Engineering",
+  "university": "Sreenidhi Institute of Science & Technology",
+  "major": "Computer Science",
   "graduationYear": "2020",
   
   "company": "Tech Corp Inc.",
   "jobTitle": "Senior Software Engineer",
   "experience": "5 years",
   
-  "skills": "Python (NumPy, Pandas, SciPy, Statsmodels), R, SQL, Java, Scala,  Tableau, Power BI, Looker Studio (GCP), AWS QuickSight, Matplotlib, Seaborn, Plotly, MySQL, PostgreSQL, MongoDB, BigQuery (GCP), AWS Redshift, Snowflake, Oracle, Apache Spark, Hadoop, Hive, HBase, Apache Airflow, Talend, Alteryx, AWS Glue, SSIS, Informatica,AWS (S3, Redshift, Lambda, SageMaker, Glue), GCP (BigQuery, Looker Studio, Cloud Functions, Dataflow, Dataproc),Excel (Advanced Functions, VBA, Power Query), Jupyter Notebooks, Jira, Confluence, Google Analytics, SAS, RapidMiner",
+  "skills": "Python (NumPy, Pandas, SciPy, Statsmodels), R, SQL, Java, Scala, Tableau, Power BI, Looker Studio (GCP), AWS QuickSight, Matplotlib, Seaborn, Plotly, MySQL, PostgreSQL, MongoDB, BigQuery (GCP), AWS Redshift, Snowflake, Oracle, Apache Spark, Hadoop, Hive, HBase, Apache Airflow, Talend, Alteryx, AWS Glue, SSIS, Informatica, AWS (S3, Redshift, Lambda, SageMaker, Glue), GCP (BigQuery, Looker Studio, Cloud Functions, Dataflow, Dataproc), Excel (Advanced Functions, VBA, Power Query), Jupyter Notebooks, Jira, Confluence, Google Analytics, SAS, RapidMiner",
   
-  "summary": "Results-driven Data Analyst with over 3+ years of experience specializing in data extraction, manipulation, and predictive analytics across financial and retail sectors. Expert in SQL, Python, and cloud technologies like AWS and GCP, including advanced tools like Looker Studio, PowerBI, Tableau and BigQuery. Demonstrated success in delivering actionable insights through advanced data visualization and market basket analysis, leading to significant improvements in business processes and revenue optimization. Adept at cross-functional collaboration and driving data-driven decisions in fast-paced environments",
+  "summary": "Results-driven Data Analyst with over 3+ years of experience specializing in data extraction, manipulation, and predictive analytics across financial and retail sectors. Expert in SQL, Python, and cloud technologies like AWS and GCP, including advanced tools like Looker Studio, Power BI, Tableau and BigQuery. Demonstrated success in delivering actionable insights through advanced data visualization and market basket analysis, leading to significant improvements in business processes and revenue optimization. Adept at cross-functional collaboration and driving data-driven decisions in fast-paced environments.",
   
-  "coverLetter": "I am excited to apply for this position as it aligns perfectly with my experience in Data Analysis",
+  "coverLetter": "I am excited to apply for this position as it aligns perfectly with my experience in Computer Science.",
   
   "salary": "75000",
   "startDate": "2025-11-01",
   
   "citizenship": "Non US",
-  "workAuth": true,
+  "workAuth": "F1 OPT",
+  "availableImmediately": "After 2 weeks",
+  "willingToRelocate": "Yes",
+  "authorizedToWorkUS": "Yes",
+  "sponsorshipRequired": "No",
+  
   "veteran": false,
   "disability": false,
   "gender": "Female",
   "race": "Asian",
+  "ethnicity": "Asian",
   
-  "referral": "LinkedIn"
+  "referral": "LinkedIn",
+  
+  "deviceType": "Desktop",
+  
+  "password": "Candidate@123",
+  "confirmPassword": "Candidate@123"
 }
