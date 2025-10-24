@@ -61,7 +61,7 @@
         <p id="current-date" style=" font-size: 1.2rem;"> Today is </p>
         <div class="dashboard-sec-1">
           <div class="hiring">
-            
+
           </div>
           <div class="application">
             <div class="total-application">30</div>
@@ -71,15 +71,15 @@
         </div>
         <h2>My Candidates</h2>
       </div>
-<!-- ---------------------------------------------------------------------------- -->
-<!-- ---------------------------[INBOX]------------------------------------------ -->
+      <!-- ---------------------------------------------------------------------------- -->
+      <!-- ---------------------------[INBOX]------------------------------------------ -->
       <div class="section" id="inbox">
         <h2 class="heading">Inbox</h2>
         <p>Check your latest messages and notifications here.</p>
       </div>
-<!-- --------------------------------------------------------------------------- -->
+      <!-- --------------------------------------------------------------------------- -->
 
-<!-- ---------------------------[CALENDAR & TASKS]------------------------------ -->
+      <!-- ---------------------------[CALENDAR & TASKS]------------------------------ -->
 
       <div class="section" id="calendar">
         <h2 class="heading">Calendar & Tasks</h2>
@@ -111,21 +111,22 @@
           </div>
         </div>
       </div>
-<!-- --------------------------------------------------------------------------- -->
+      <!-- --------------------------------------------------------------------------- -->
 
-<!-- ---------------------------[JOBS & CANDIDATES]------------------------------ -->
+      <!-- ---------------------------[JOBS & CANDIDATES]------------------------------ -->
       <div class="section" id="jobs">
         <h2 class="heading">Jobs</h2>
         <p>View and manage job listings or add new opportunities.</p>
       </div>
-<!-- --------------------------------------------------------------------------- -->
+      <!-- --------------------------------------------------------------------------- -->
 
-<!-- ---------------------------[ CANDIDATES]------------------------------ -->
+      <!-- ---------------------------[ CANDIDATES]------------------------------ -->
       <div class="section" id="candidates">
         <h2 class="heading">Candidates
-          <button class="add-btn" id="openModalBtn" class="add-button">+</button>
+          <button class="add-btn" id="openModalBtn">+</button>
         </h2>
         <p>Browse, track, and review candidate profiles here.</p>
+
         <table id="candidateTable">
           <thead>
             <tr>
@@ -133,88 +134,96 @@
               <th>JOB TITLE</th>
               <th>PHONE</th>
               <th>EMAIL</th>
-              <th>VIEW/EDIT</th>
+              <th>DETAILS</th>
+              <th>RESUME</th>
             </tr>
           </thead>
-          <tbody>
-            
-          </tbody>
+          <tbody></tbody>
         </table>
-        <!-- ===== Modal Form ===== -->
+
+        <!-- ===== Add New Candidate Modal ===== -->
         <div class="modal" id="candidateModal">
           <div class="modal-content">
             <button class="close-btn" id="closeModalBtn">&times;</button>
             <h2>Add New Candidate</h2>
-            <form id="candidateForm">
+            <form id="candidateForm" enctype="multipart/form-data">
               <input type="text" id="name" placeholder="Candidate Name" required>
               <input type="text" id="job" placeholder="Job Title" required>
               <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" required>
-              <input type="email" id="email" placeholder="Email Id" required>
+              <input type="email" id="email" placeholder="Email ID" required>
+              <label>Upload Resume:</label>
+              <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
               <button type="submit" class="save-btn">Save Candidate</button>
             </form>
           </div>
         </div>
 
-        <!-- Detailed View Modal -->
-        <div id="detailModal"
-          style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; overflow-y: auto;">
-          <div
-            style="background: white; max-width: 900px; margin: 20px auto; border-radius: 15px; padding: 30px; position: relative;">
-            <button onclick="closeDetailModal()"
-              style="position: absolute; top: 15px; right: 15px; background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">✕
-              Close</button>
-            <div id="detailContent"></div>
+        <!-- ===== Add More Details / Edit Modal ===== -->
+        <div class="modal" id="detailModal">
+          <div class="modal-content" style="max-width: 800px;">
+            <button class="close-btn" id="closeDetailBtn">&times;</button>
+            <h2 id="detailModalTitle">Add More Details</h2>
+            <form id="detailForm">
+              <input type="text" id="editName" placeholder="Candidate Name" required>
+              <input type="text" id="editJob" placeholder="Job Title" required>
+              <input type="tel" id="editPhone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+              <input type="email" id="editEmail" placeholder="Email ID" required>
+              <textarea id="editSkills" placeholder="Skills / Summary / Notes"></textarea>
+              <button type="submit" class="save-btn">Save Details</button>
+            </form>
           </div>
         </div>
       </div>
-<!-- --------------------------------------------------------------------------- -->
+      <!-- --------------------------------------------------------------------------- -->
     </div>
 
-<!-- ---------------------------[CAREER SITES]------------------------------------->
+    <!-- ---------------------------[CAREER SITES]------------------------------------->
     <div class="section" id="career">
       <h2 class="heading">Career Sites</h2>
       <p>Customize and manage your company’s career site pages.</p>
     </div>
-<!-- --------------------------------------------------------------------------- -->
+    <!-- --------------------------------------------------------------------------- -->
 
-<!-- ----------------------------[SETTINGS ] -------------------------------------->
+    <!-- ----------------------------[SETTINGS ] -------------------------------------->
     <div class="section" id="settings">
       <h2 class="heading">Settings</h2>
       <p>Adjust your preferences, permissions, and integrations here.</p>
     </div>
-<!--------------------------------------------------------------------------------->
+    <!--------------------------------------------------------------------------------->
 
-<!------------------------------[HELP]--------------------------------------------->
+    <!------------------------------[HELP]--------------------------------------------->
     <div class="section" id="help">
       <h2 class="heading">Need Help?</h2>
       <p>Access support, documentation, or contact our help team.</p>
     </div>
-<!-- ------------------------------------------------------------------------------->
+    <!-- ------------------------------------------------------------------------------->
   </div>
   </div>
+
+  <!------------------------------------ [TABLE SCRIPT] ------------------------------------->
   <script>
     const openModalBtn = document.getElementById('openModalBtn');
     const closeModalBtn = document.getElementById('closeModalBtn');
     const modal = document.getElementById('candidateModal');
     const form = document.getElementById('candidateForm');
     const tableBody = document.querySelector('#candidateTable tbody');
+    const detailModal = document.getElementById('detailModal');
+    const closeDetailBtn = document.getElementById('closeDetailBtn');
+    const detailForm = document.getElementById('detailForm');
+    const detailModalTitle = document.getElementById('detailModalTitle');
 
-    // Open modal
-    openModalBtn.addEventListener('click', () => {
-      modal.style.display = 'flex';
-    });
+    let candidates = [];
 
-    // Close modal
-    closeModalBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    // Close when clicking outside
+    // Open & close modals
+    openModalBtn.addEventListener('click', () => modal.style.display = 'flex');
+    closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
+    closeDetailBtn.addEventListener('click', () => detailModal.style.display = 'none');
     window.addEventListener('click', (e) => {
       if (e.target === modal) modal.style.display = 'none';
+      if (e.target === detailModal) detailModal.style.display = 'none';
     });
 
-    // Save candidate and add to table
+    // Add new candidate
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -222,23 +231,98 @@
       const job = document.getElementById('job').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const email = document.getElementById('email').value.trim();
+      const resume = document.getElementById('resume').files[0];
 
-      if (!name || !job || !phone || !email) return;
+      if (!name || !job || !phone || !email || !resume) return alert("Please fill all fields.");
 
-      const newRow = document.createElement('tr');
-      newRow.innerHTML = `
-      <td>${name}</td>
-      <td>${job}</td>
-      <td>${phone}</td>
-      <td>${email}</td>
-    `;
-      tableBody.appendChild(newRow);
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const candidate = {
+          id: Date.now(),
+          name,
+          job,
+          phone,
+          email,
+          resumeName: resume.name,
+          resumeData: event.target.result,
+          skills: "",
+          hasDetails: false
+        };
 
-      form.reset();
-      modal.style.display = 'none';
+        candidates.push(candidate);
+        addCandidateRow(candidate);
+        form.reset();
+        modal.style.display = 'none';
+      };
+      reader.readAsDataURL(resume);
     });
+
+    // Add candidate to table
+    function addCandidateRow(candidate) {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+      <td>${candidate.name}</td>
+      <td>${candidate.job}</td>
+      <td>${candidate.phone}</td>
+      <td>${candidate.email}</td>
+      <td>
+        <button class="view-btn" onclick="openDetailModal(${candidate.id})">
+          ${candidate.hasDetails ? "View/Edit" : "Add Details"}
+        </button>
+      </td>
+      <td>
+        <button class="resume-btn" onclick="viewResume(${candidate.id})">View Resume</button>
+      </td>
+    `;
+      tableBody.appendChild(row);
+    }
+
+    // Open Add/View/Edit details modal
+    window.openDetailModal = (id) => {
+      const candidate = candidates.find(c => c.id === id);
+      if (!candidate) return;
+
+      document.getElementById('editName').value = candidate.name;
+      document.getElementById('editJob').value = candidate.job;
+      document.getElementById('editPhone').value = candidate.phone;
+      document.getElementById('editEmail').value = candidate.email;
+      document.getElementById('editSkills').value = candidate.skills || "";
+
+      detailModalTitle.textContent = candidate.hasDetails ? "View / Edit Details" : "Add More Details";
+
+      detailForm.onsubmit = (e) => {
+        e.preventDefault();
+
+        candidate.name = document.getElementById('editName').value.trim();
+        candidate.job = document.getElementById('editJob').value.trim();
+        candidate.phone = document.getElementById('editPhone').value.trim();
+        candidate.email = document.getElementById('editEmail').value.trim();
+        candidate.skills = document.getElementById('editSkills').value.trim();
+        candidate.hasDetails = true;
+
+        refreshTable();
+        detailModal.style.display = 'none';
+      };
+
+      detailModal.style.display = 'flex';
+    };
+
+    // View Resume
+    window.viewResume = (id) => {
+      const candidate = candidates.find(c => c.id === id);
+      if (!candidate || !candidate.resumeData) return alert("No resume uploaded.");
+      const win = window.open();
+      win.document.write(`<iframe src="${candidate.resumeData}" width="100%" height="100%"></iframe>`);
+    };
+
+    // Refresh table after edits
+    function refreshTable() {
+      tableBody.innerHTML = "";
+      candidates.forEach(addCandidateRow);
+    }
   </script>
-  
+
+  <!----------[SECTION CHANGE]------------------------------------------------->
   <script>
     function showSection(id) {
       document.querySelectorAll('.section').forEach(section => {
@@ -247,6 +331,10 @@
       document.getElementById(id).classList.add('active');
     }
   </script>
+  <!------------------------------------------------------------------------------------------->
+
+
+  <!------------------------------------ [CURRENT DATE SCRIPT] ------------------------------------->
   <script>
     const today = new Date();
 
@@ -272,6 +360,9 @@
     // Display in HTML
     document.getElementById("current-date").textContent = fullDate;
   </script>
+  <!------------------------------------------------------------------------------------------->
+
+  <!------------------------------------ [CALENDER SCRIPT] ------------------------------------->
   <script>
     const calendarDays = document.getElementById('calendarDays');
     const taskListContainer = document.getElementById('taskListContainer');
@@ -373,6 +464,5 @@
   </script>
 </body>
 <script src="candy.js"></script>
-<!-- <script src="fill.js"></script> -->
 
 </html>

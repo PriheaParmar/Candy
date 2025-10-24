@@ -20,10 +20,12 @@
   "university": "Sreenidhi Institute of Science & Technology",
   "major": "Computer Science",
   "graduationYear": "2020",
+  "gpa": "3.8",
   
   "company": "Tech Corp Inc.",
   "jobTitle": "Senior Software Engineer",
   "experience": "5 years",
+  "yearsOfExperience": "5",
   
   "skills": "Python (NumPy, Pandas, SciPy, Statsmodels), R, SQL, Java, Scala, Tableau, Power BI, Looker Studio (GCP), AWS QuickSight, Matplotlib, Seaborn, Plotly, MySQL, PostgreSQL, MongoDB, BigQuery (GCP), AWS Redshift, Snowflake, Oracle, Apache Spark, Hadoop, Hive, HBase, Apache Airflow, Talend, Alteryx, AWS Glue, SSIS, Informatica, AWS (S3, Redshift, Lambda, SageMaker, Glue), GCP (BigQuery, Looker Studio, Cloud Functions, Dataflow, Dataproc), Excel (Advanced Functions, VBA, Power Query), Jupyter Notebooks, Jira, Confluence, Google Analytics, SAS, RapidMiner",
   
@@ -32,7 +34,9 @@
   "coverLetter": "I am excited to apply for this position as it aligns perfectly with my experience in Computer Science.",
   
   "salary": "75000",
+  "salaryType": "Annually",
   "startDate": "2025-11-01",
+  "availableToStart": "2025-11-01",
   
   "citizenship": "Non US",
   "workAuth": "F1 OPT",
@@ -48,9 +52,32 @@
   "ethnicity": "Asian",
   
   "referral": "LinkedIn",
+  "hearAboutSource": "LinkedIn",
   
   "deviceType": "Desktop",
   
   "password": "Candidate@123",
-  "confirmPassword": "Candidate@123"
+  "confirmPassword": "Candidate@123",
+  "verifyingPassword": "Candidate@123",
+  "verifyingEmail": "snehae@mywebemails.com",
+  
+  "previouslyEmployed": "No",
+  "highSchool": "St. Mary's High School",
+  "forbidden": "No",
+  "backgroundScreening": "Yes",
+  "drugTest": "Yes",
+  "eligibleToPerformTasks": "Yes",
+  "spokenLanguages": "English, Hindi, Telugu",
+  "workBefore": "No",
+  "securityClearance": "None",
+  "everRegistered": "No",
+  "legalStatus": "F1 OPT",
+  "essentialFunctions": "Yes",
+  "legalAge": "Yes",
+  "drivingLicense": "Yes",
+  "willingToWorkOnSite": "Yes",
+  
+  "dob": "1998-05-15",
+  "timezone": "EST",
+  "preferredLocation": "Albany, NY"
 }
