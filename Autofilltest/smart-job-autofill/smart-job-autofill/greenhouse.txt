@@ -1,0 +1,61 @@
+apply
+First Name
+Last Name
+Email
+Country
+Phone
+Location (City)
+Resume/CV
+LinkedIn Profile
+What is your highest level of education completed? Did you receive a degree?
+Our company is currently able to offer remote employment for this position in the following states: AZ, AR, CA, CO, CT, FL, GA, IN, KS, KY, MA, MN, MO, NV, NJ, NY, NC, OH, OK, PA, SC, TN, TX, UT, VA, WA, WI. Please confirm which state you currently reside in from the options below:
+How many years of experience do you have in DevOps?
+Do you have experience deploying and monitoring web applications in AWS?
+Do you have experience with Infrastructure as Code and infrastructure testing strategies?
+Do you have experience working in and architecting for regulated environments with data privacy regulations like GDPR (HIPAA preferred)? If yes, where did you do this work at?
+Please describe any experience you have building secure development and test environments integrated to CI/CD pipelines and software release cycles (1-3 sentences)
+Legal First Name
+Legal Last Name
+Address Type
+Address Line 1
+Address Line 2
+City
+State
+Zip Code
+Country
+Are you authorized to work in the US?
+Will you require Visa Sponsorship now, or in the future?
+Gender
+Are you Hispanic/Latino?
+Veteran Status
+Disability Status
+School
+Degree
+Discipline
+Are you at least 18 years of age?
+Have you entered into a non-disclosure or non-compete agreement or understanding of any kind?*
+Have you worked at any company in the past?*
+How did you hear about us?*
+Do you hold a security clearance?*
+At your current employer, are you currently working on a project with Accenture or have you worked on a project with Accenture in the past 24 months?
+Are you a current employee of the U.S. Government (including U.S. Congress or military) or any state or local government? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID (see list of exceptions below). NOTE: answer yes if you have accepted the “Fork-in-the-Road” offer, separated with a Deferred Retirement Plan, or are on administrative leave pending separation from the Government.
+Will you be serving as enlisted personnel in either the Reserves or the National Guard while working for AFS?
+Were you an employee of the U.S. Government (including U.S. Congress or military) or any state or local government within the past 10 years? This includes entities owned or controlled by the U.S. Federal Government, such as Amtrak, the United States Postal Service, and USAID (see list of exceptions below).
+Do you have any family members or people you have close relationships with who work for Accenture Federal Services?
+If yes, please list the full name of the employee(s) and your relationship to them.
+Affirmation
+Are you Hispanic/Latino?*
+Please identify your race
+Do you live in one of the following states? Alaska, Arkansas, Idaho, Iowa, Kentucky, Mississippi, West Virginia or South Dakota
+Please confirm your City and State
+Are you currently bound by a non-compete or confidentiality agreement?
+What certifications and licenses do you have? If none, please type 'N/A'. 
+Will you now or in the future require Visa sponsorship?
+Desired Salary or Hourly Rate
+How many years experience do you have working with Snowflake?
+Do you have 4+ years DBA experience?
+Do you have 4+ years experience working with Python?
+company complies with U.S. Government space technology export regulations, therefore will you state which of the following applies to you:
+What is the most impressive thing you have ever accomplished?
+At company, we value in-person collaboration and a strong work ethic. Are you comfortable with working onsite at our San Francisco HQ 5 days a week and commit to 55 hours per week?
+How did you hear about company?
