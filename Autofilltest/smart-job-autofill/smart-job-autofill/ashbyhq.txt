@@ -1,8 +1,10 @@
 Resume
+name
 fullname
 Preferred First and Last Name
 Email
 Phone
+resume (upload)
 linkedin
 why are you interested in working at Kraken?
 Have you used a Kraken product in the last six months?
@@ -15,15 +17,29 @@ What best describes your proficiency in SQL?
 What best describes your proficiency in BI tools?
 What best describes your proficiency in dbt (Data Build Tool)?
 I agree to receive SMS text messages, including those automatically generated, even if the number I provide is on a company, state, or federal do not call registry. I also agree to Kin's terms of use, and I expressly consent to my information being used and disclosed as described in the Kin applicant privacy policy. Message and data rates may apply. I understand that I am not required to consent as a condition of my application and may revoke consent at any time.
-Location
+Location (select)
 Mailing Address
 Zip Code
-Are you authorized to work for any employer in the US?
-Will you now or in the future require sponsorship for employment?
+Are you authorized to work for any employer in the US? (Y/N) 
+Will you now or in the future require sponsorship for employment? (Y/N) 
 How did you hear about us?
 Have you ever worked at Kin or any of its subsidiaries as an employee or contractor?
+Have you previously worked with Equip before? If yes, please write dates and title
 If yes to the previous question, please provide details of your previous roles, departments, and the duration of your employment with any affiliated entity.
 Before we proceed with your application, we would like to ensure that you are comfortable with us collecting and processing your personal information for the purpose of this application and potential employment.
 Gender
 Race
 Veteran Status
+When can you start a new role (date)
+Are you willing to work from the required location? (Y/N) 
+were you refered to (company) (Y/N) 
+What are your salary expectations?
+What is the split between your backend/frontend experience? (i.e. 50% backend, 50% frontend etc.)
+How many years of industry react, react native and typescript do you have??
+How many years of industry backend java experience do you have?
+Do you have experience with mobile development? (ios, android or both)
+Do you have experience with Postgres?
+Can you accommodate working EST or CST time zone hours? (Y/N)
+ 
+
+

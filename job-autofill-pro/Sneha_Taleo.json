@@ -1,0 +1,23 @@
+{
+  "firstName": "Sneha",
+  "lastName": "Elizabeth",
+  "email": "snehae@mywebemails.com",
+  "phone": "+1(312)774-9177",
+  "city": "Albany",
+  "state": "New York",
+  "zip": "12204",
+  "country": "United States",
+  "linkedin": "https://www.linkedin.com/in/sneha-elizabeth-saji-1b8585221/",
+  "school": "Sreenidhi Institute of Science & Technology",
+  "degree": "Bachelor of Engineering",
+  "major": "Computer Science",
+  "workAuth": "Yes",
+  "sponsorship": "No",
+  "gender": "Female",
+  "ethnicity": "Asian",
+  "veteran": "No",
+  "disability": "No",
+  "relocation": "Yes",
+  "source": "LinkedIn",
+  "salaryExpectations": "75000"
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Job Autofill Pro</title>
+  <style>
+    body { font-family: sans-serif; width: 350px; padding: 15px; }
+    button, input, label { display: block; margin-top: 10px; width: 100%; }
+    #status { margin-top: 10px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Job Autofill Pro</h2>
+
+  <label>Upload JSON Profile (per platform)</label>
+  <input type="file" id="profileUpload" accept=".json">
+
+  <label>Upload Resume (per platform)</label>
+  <input type="file" id="resumeUpload" accept=".pdf,.doc,.docx">
+
+  <label>Gemini API Key</label>
+  <input type="password" id="geminiKey" placeholder="Enter Gemini API key">
+
+  <button id="startBtn">🚀 Start Filling</button>
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

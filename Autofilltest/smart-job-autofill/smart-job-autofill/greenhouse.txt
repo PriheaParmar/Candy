@@ -16,6 +16,7 @@ Do you have experience working in and architecting for regulated environments wi
 Please describe any experience you have building secure development and test environments integrated to CI/CD pipelines and software release cycles (1-3 sentences)
 Legal First Name
 Legal Last Name
+full legal name
 Address Type
 Address Line 1
 Address Line 2
@@ -59,3 +60,11 @@ company complies with U.S. Government space technology export regulations, there
 What is the most impressive thing you have ever accomplished?
 At company, we value in-person collaboration and a strong work ethic. Are you comfortable with working onsite at our San Francisco HQ 5 days a week and commit to 55 hours per week?
 How did you hear about company?
+Have you ever worked at (company) or any of it's subsidiaries?*
+Are you willing to come into the office two days a week on a flex-hybrid schedule?* 
+Citizenship Status*
+How many years of professional experience do you have as a software engineer?
+Are you willing to work in office, 5-days a week?*
+What are the main programming languages and technologies you've worked with in your previous roles?*
+Which of the following areas are you most passionate about, and where do you feel you can contribute the most?*
+Are you able to be onsite Tuesday, Wednesday, and Thursday in our NYC offices every week?*

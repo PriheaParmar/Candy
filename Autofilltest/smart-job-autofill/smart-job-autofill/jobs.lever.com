@@ -1,4 +1,4 @@
-Resume
+Resume (Upload)
 fullname
 Email
 Phone
@@ -15,6 +15,7 @@ Please type your initials to acknowledge the following: I understand that as a c
 The following are the agreements I have with my present or a prior employer that may affect my work related activities if I am hired by the Company (Please provide a copy of the agreement at the time of your interview if permitted or allowed):
 Please type your initials to acknowledge the following: I further understand that I am not to disclose to the Company or its representatives any confidential information or trade secrets of my present or a prior employer and that I am not to engage in any conduct that would violate an agreement, if any, between me and my present or a prior employer. I understand that just as I am free to resign at any time, the Company reserves the right to terminate my employment at any time, with or without cause and without prior notice. I understand that no representative of the Company has the authority to make any assurances to the contrary. Unless I have a written agreement with Company to the contrary, I understand that any employment with Company will be at-will.
 Where did you hear about this opportunity?
+how did you hear about (compnay name)? (selct)
 If you heard about this opportunity through a job board, please indicate which one.
 Have you previously been part of the recruiting/interviewing process for a position with DW? If so, what position?
 Would you be comfortable working in a work environment that produces content that is political and conservative in nature?
@@ -22,3 +23,12 @@ This is a full-time in-office position (working remotely is not an option). Are 
 Are you located in the Nashville, TN area? If not, are you willing to relocate if required for the position?
 Compensation expectations:
 Will you now or in the future require sponsorship for employment visa status (e.g., H-1B visa)?
+Were you referred by a (company) employee? (select)
+Do you have the unrestricted right to work in the United States? (Y/n)
+Do you now, or in the future require sponsorship?( Y/n)
+Are you currently living in the US or Canada? (dot)
+What are your salary expectations?
+Gender (select)
+race (Select)
+veteran status (Select)
+Have you completed the following level of education: Bachelor's Degree (or non-US equivalent)?(Y/N)

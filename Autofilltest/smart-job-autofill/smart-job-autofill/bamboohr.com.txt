@@ -1,0 +1,19 @@
+firstname
+Last Name
+Email
+Phone
+Address
+City
+State (select)
+Zip
+country (Select)
+resume (upload)
+Date Available  (date)
+desired pay
+LinkedIn Profile URL
+Do you require sponsorship to work in the United States?  (Y/N)
+Do you live in (any name if doesnt match with residential state no) (y/n)
+Gender (Select)
+Ethnicity (Select)
+Disability (Select)
+veteran status (dot)
