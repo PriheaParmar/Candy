@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Job Autofill Assistant",
+  "version": "1.0",
+  "description": "Automatically fill job applications (Greenhouse, Workday, etc.) using uploaded profiles.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Job Autofill Assistant"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["utils/siteDetector.js", "content.js"]
+    }
+  ]
+}

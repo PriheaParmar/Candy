@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h3>Job Autofill</h3>
+
+  <label>Select site:</label>
+  <select id="siteSelect">
+    <option value="auto">Auto Detect</option>
+    <option value="greenhouse">Greenhouse</option>
+    <option value="workday">Workday</option>
+    <option value="rippling">Rippling</option>
+    <option value="career">Career Page</option>
+  </select>
+
+  <button id="uploadBtn">Upload Site JSON</button>
+  <button id="startBtn">Start Filling</button>
+
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

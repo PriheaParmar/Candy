@@ -1,0 +1,85 @@
+{
+  "personal_info": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "legal_first_name": "John",
+    "legal_last_name": "Doe",
+    "email": "john.doe@email.com",
+    "phone": "+1 (555) 123-4567",
+    "location": "San Francisco, CA",
+    "city": "San Francisco",
+    "state": "California",
+    "country": "United States",
+    "zip_code": "94102",
+    "address_line_1": "123 Main Street",
+    "address_line_2": "Apt 4B",
+    "address_type": "Permanent",
+    "linkedin": "https://linkedin.com/in/johndoe"
+  },
+  
+  "work_authorization": {
+    "work_authorization": "Yes",
+    "visa_sponsorship": "No",
+    "citizenship_status": "US Citizen",
+    "security_clearance": "No"
+  },
+  
+  "education": {
+    "education_level": "Bachelor's Degree",
+    "school": "Stanford University",
+    "degree": "Bachelor of Science",
+    "discipline": "Computer Science"
+  },
+  
+  "experience": {
+    "years_experience": "5",
+    "devops_experience": "3 years",
+    "aws_experience": "Yes - 3 years of experience deploying and monitoring applications on AWS",
+    "iac_experience": "Yes - Terraform and CloudFormation",
+    "python_experience": "Yes",
+    "dba_experience": "No",
+    "snowflake_experience": "2 years"
+  },
+  
+  "technical_skills": {
+    "programming_languages": "Python, JavaScript, Go, SQL",
+    "technologies": "AWS, Docker, Kubernetes, Terraform, CI/CD",
+    "certifications": "AWS Solutions Architect, Kubernetes Administrator"
+  },
+  
+  "work_preferences": {
+    "desired_salary": "120000",
+    "onsite_preference": "Hybrid",
+    "work_hours_commitment": "Yes",
+    "remote_states": "CA"
+  },
+  
+  "compliance": {
+    "age_18": "Yes",
+    "non_compete": "No",
+    "worked_before": "No",
+    "government_employee": "No",
+    "family_at_company": "No"
+  },
+  
+  "demographics": {
+    "gender": "Prefer not to say",
+    "hispanic_latino": "No",
+    "race": "Prefer not to say",
+    "veteran_status": "Not a veteran",
+    "disability_status": "No"
+  },
+  
+  "custom_answers": {
+    "how_hear": "LinkedIn",
+    "why_interested": "I am passionate about DevOps and cloud infrastructure. Your company's commitment to innovation and engineering excellence aligns perfectly with my career goals.",
+    "most_impressive": "Built and deployed a fully automated CI/CD pipeline that reduced deployment time by 70% and improved system reliability to 99.9% uptime.",
+    "secure_environments": "Yes - Implemented HIPAA-compliant infrastructure at HealthTech Corp, including encrypted data storage, audit logging, and access controls.",
+    "passionate_areas": "Cloud Infrastructure, DevOps Automation, Site Reliability Engineering"
+  },
+  
+  "files": {
+    "resume": "resume.pdf",
+    "cover_letter": "cover_letter.pdf"
+  }
+}

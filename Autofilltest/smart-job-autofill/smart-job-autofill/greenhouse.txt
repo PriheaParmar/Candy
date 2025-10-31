@@ -5,7 +5,7 @@ Email
 Country
 Phone
 Location (City)
-Resume/CV
+Resume/CV (upload)
 LinkedIn Profile
 What is your highest level of education completed? Did you receive a degree?
 Our company is currently able to offer remote employment for this position in the following states: AZ, AR, CA, CO, CT, FL, GA, IN, KS, KY, MA, MN, MO, NV, NJ, NY, NC, OH, OK, PA, SC, TN, TX, UT, VA, WA, WI. Please confirm which state you currently reside in from the options below:
